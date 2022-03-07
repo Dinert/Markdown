@@ -12,12 +12,15 @@
 + 设置别名
 + 在任何地方加载scss变量
 + 异步加载图片
-+ 
 
 #### vite缺点
 + 不支持引入vue文件取消后缀名
   - ```import Resolve from '@/views/resolve/index.vue'``` 正确
   - ```import Resolve from '@/views/resolve'``` 这样子文件会报错
+
+#### 安装好用的插件
++ unplugin-vue-components nplugin-auto-import 自动导入Element-plus的样式和组件
+
 
 #### 文件目录结构
  ![目录](src/img/目录.jpg)  
@@ -35,4 +38,3 @@
   + vite.config.ts —— 配置文件
 
 
-tt
