@@ -1,0 +1,118 @@
+
+
+## 基本目录
+
+***
+
+1. **assets**：存储静态资源CSS、scss、less、图片、json
+
+1. **base-ui**：通用组件，命名方式为kebab-case（短横线分隔命名）
+
+1. **components**：页面组件，命名方式为kebab-case（短横线分隔命名）
+
+1. **directive**：全局自定义指令
+
+1. **global**：引用全局自定义指令、全局组件、全局.....
+
+1. **hook**：hook是Vue3项目中的文件夹，Vue2项目不需要
+
+1. **router**：路由
+
+1. **service**：请求
+
+1. **store**：全局的状态管理
+
+1. **theme**：风格管理
+
+1. **utils**：一些工具方法
+
+1. **views**: 视图，命名方式为PascalCase（大驼峰形式）
+
+![](https://tcs.teambition.net/storage/312i27668b2a00385ee5e43756bb4d5c1d17?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IjVlNGI5MTA1NjkwZDlhMDAwMTg2ZDkxMiIsImV4cCI6MTY1MzU1NTIxMCwiaWF0IjoxNjUzNTUxNjEwLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMmkyNzY2OGIyYTAwMzg1ZWU1ZTQzNzU2YmI0ZDVjMWQxNyJ9.TpOv8XAYhN5eeLv2Yg5tj-WI-r-F5RVXLFPbbimE0Tw&download=%E7%9B%AE%E5%BD%952.jpg "")
+
+
+
+## assets（静态资源）
+
+***
+
+![](https://tcs.teambition.net/storage/312i72854b04da6ff6aba80259a5a828656c?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IjVlNGI5MTA1NjkwZDlhMDAwMTg2ZDkxMiIsImV4cCI6MTY1MzU1NjI4OSwiaWF0IjoxNjUzNTUyNjg5LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMmk3Mjg1NGIwNGRhNmZmNmFiYTgwMjU5YTVhODI4NjU2YyJ9.8u65vfM9o7U_4QGjj1hTG-LdORLP2uNU97cc_S7wO78&download=1653552674%281%29.jpg "")
+
+![](https://tcs.teambition.net/storage/312i5c163d4955fc6d47256daad080573d32?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IjVlNGI5MTA1NjkwZDlhMDAwMTg2ZDkxMiIsImV4cCI6MTY1MzU1NjM3NCwiaWF0IjoxNjUzNTUyNzc0LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMmk1YzE2M2Q0OTU1ZmM2ZDQ3MjU2ZGFhZDA4MDU3M2QzMiJ9.sDWO6hHgYiuHfMCuWHTRXox0M57452Ur33x1y31Hiyw&download=1653552769%281%29.jpg "")
+
+1. 从图中可以看出，我是从vie.config.js或者是vue.config.js引入了variabled.scss和common.scss.
+
+1. 在assets/style/scss新建一个scss文件主要是因为好管理，统一出口导出。
+
+1. 当然，小伙伴可能会有一些疑问。
+
+1. 问题：
+
+    1. 为什么要配置文件中写两个scss文件：因为要把common.scss和variabled分开，变量就是存储一些颜色，一些定义的配置。而common.scss主要是做继承类的作用，因为你在@/assets/style/scss/index.scss导出是继承不了的。
+
+    1. 为什么要统一管理：因为normal代表的是默认的样式，不用改。icon是图标的样式、element是element-ui框架的样式。如果统一写到index.scss中，会导致样式过多，找到对应的样式耗费的时间长。
+
+## base-ui（通用组件）
+
+![](https://tcs.teambition.net/storage/312i40b6857daf6ae16de34afda0d9cbde1b?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IjVlNGI5MTA1NjkwZDlhMDAwMTg2ZDkxMiIsImV4cCI6MTY1MzU1NzU0MywiaWF0IjoxNjUzNTUzOTQzLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMmk0MGI2ODU3ZGFmNmFlMTZkZTM0YWZkYTBkOWNiZGUxYiJ9.ONOP8VnLwTBXFIr1XMYOxz49ipQG2atHzyYNC5UUl-4&download=image.png "")
+
+1. base-ui主要是放置一些自已封装的通用组件，或者是基于UI框架封装的通用组件（起码要保留该组件80%的配置性）
+
+1. 使用keab-case（短横线分隔命名），使用时也必须这样使用
+
+1. 至于这里为什么用d-xxxx，因为这是我写的通用组件，我习惯在前面加上d-
+
+## components（业务组件）
+
+![](https://tcs.teambition.net/storage/312idfa64d5785096507967491b1e57a2d48?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IjVlNGI5MTA1NjkwZDlhMDAwMTg2ZDkxMiIsImV4cCI6MTY1MzU1ODgxMCwiaWF0IjoxNjUzNTU1MjEwLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMmlkZmE2NGQ1Nzg1MDk2NTA3OTY3NDkxYjFlNTdhMmQ0OCJ9.8MX0Zw6taPLfHyfokE5FKOLQ9TtUiCpBEqxUxh5T6mw&download=1653555179%281%29.jpg "")
+
+1. components下的common主要是放置一些通用的全局组件
+
+1. 使用keab-case（短横线分隔命名），使用时也必须这样使用
+
+1. windowInfoInput指的则是views（视图）下的windowInfoInput的特定组件
+
+## directive（指令）
+
+![](https://tcs.teambition.net/storage/312i21ba9bc9fe9aca79d303a6be3f5517d8?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IjVlNGI5MTA1NjkwZDlhMDAwMTg2ZDkxMiIsImV4cCI6MTY1MzU1ODMyMCwiaWF0IjoxNjUzNTU0NzIwLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMmkyMWJhOWJjOWZlOWFjYTc5ZDMwM2E2YmUzZjU1MTdkOCJ9.frSfiix1DUypE1nYBQ6blU48CfmA8iuz4QzlbjLWOsg&download=image.png "")
+
+## global（全局使用的组件、图标、挂载属性）
+
+![](https://tcs.teambition.net/storage/312i1404dba69e960e13ab7fcc8eb0ddd6ec?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IjVlNGI5MTA1NjkwZDlhMDAwMTg2ZDkxMiIsImV4cCI6MTY1MzU1OTA3OSwiaWF0IjoxNjUzNTU1NDc5LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMmkxNDA0ZGJhNjllOTYwZTEzYWI3ZmNjOGViMGRkZDZlYyJ9.3yJBlVoTEhXkNU-QJT_DwZxTdxCQrQRpL25CbREo4TY&download=image.png "")
+
+1. 全局注册的东西统一管理，Vue3可以弃用。
+
+1. 在Vue3中全局global其实没有多大用处，因为在还要用import导入全局的形式来引入全局属性，而在Vue2中可以用this的方式，所以在Vue2中可以新建一个component.js，然后按需引入需要的组件，通过index.js导出然后在全局中注册再通过this访问
+
+## Hook | mixin（Vue3的新特性）
+
+![](https://tcs.teambition.net/storage/312i0b506e6776d76cdaaad37b531eef3bd5?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IjVlNGI5MTA1NjkwZDlhMDAwMTg2ZDkxMiIsImV4cCI6MTY1MzU1OTMxMCwiaWF0IjoxNjUzNTU1NzEwLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMmkwYjUwNmU2Nzc2ZDc2Y2RhYWFkMzdiNTMxZWVmM2JkNSJ9.5Kq0wJQqtOs7XOXSX06T32m4jnTL8H-ZL_qFQF9PPMA&download=image.png "")
+
+1. hook是Vu3的一个新特性，其实react是最早提出的这个概念，用过Vue2的可以当作用mixin来用，不过可比mixin好用多了，不用引用来引用去，还层层嵌套，太麻烦了。比如你可以在hook下建一个echarts的文件夹，然后新建usePie、useSpline等等，使用这些不同的图表，如果有主题或默认配置，那就新建一个useDefault.js然后在这些图表中引入即可（文件的命名方式必需以use开头的小驼峰的命名规则）
+
+## router和service（路由和请求）
+
+![](https://tcs.teambition.net/storage/312ie70a4b393bb79216395401889a645e16?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IjVlNGI5MTA1NjkwZDlhMDAwMTg2ZDkxMiIsImV4cCI6MTY1MzU1OTQ1OCwiaWF0IjoxNjUzNTU1ODU4LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMmllNzBhNGIzOTNiYjc5MjE2Mzk1NDAxODg5YTY0NWUxNiJ9.nupxCy65eBlBM3c0u2qXEl2hA46gdgjz334AcGyv9xc&download=router.jpg "")
+
+1. 这两个其实就是路由和请求的管理，这边就不需要过多的阐述了
+
+## store（全局状态管理）
+
+![](https://tcs.teambition.net/storage/312i6a325fedb5cbfd034b1cd783bd5a47fa?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IjVlNGI5MTA1NjkwZDlhMDAwMTg2ZDkxMiIsImV4cCI6MTY1MzU1OTY4NiwiaWF0IjoxNjUzNTU2MDg2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMmk2YTMyNWZlZGI1Y2JmZDAzNGIxY2Q3ODNiZDVhNDdmYSJ9.c1x1YaLkEvU2_H8huGAvcci8wWMmCo3YhUg0aLgspPQ&download=store.jpg "")
+
+1. store就是全局状态管理工具，这里我并没有采用vuex来做管理，而是用pinia（未来的vuex5），但尤大的意思就是一直用pinia未来不会改为vuex5了，相比于以前的vuex，pinia去除了mutation，而且更轻量级。具体使用可以看官方.
+
+1. 我也是用了index.js分别对其它全局状态做导入导出的管理
+
+## theme
+
+![](https://tcs.teambition.net/storage/312i2c055b4afdbdb28e1c1a7f2ee395a4b9?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IjVlNGI5MTA1NjkwZDlhMDAwMTg2ZDkxMiIsImV4cCI6MTY1MzU1OTc1OCwiaWF0IjoxNjUzNTU2MTU4LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMmkyYzA1NWI0YWZkYmRiMjhlMWMxYTdmMmVlMzk1YTRiOSJ9.c4VpwIdrEt99gxnqaow4tYsAr4LocaXYC-dh7G5ko2I&download=theme.jpg "")
+
+1. theme主题文件，可以通过引入不同的scss来更换不同的主题。
+
+## Utils和Views（工具和视图）
+
+![](https://tcs.teambition.net/storage/312i1879d13ad9146e2cbe7df334e5d2d415?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IjVlNGI5MTA1NjkwZDlhMDAwMTg2ZDkxMiIsImV4cCI6MTY1MzU1OTkwMywiaWF0IjoxNjUzNTU2MzAzLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMmkxODc5ZDEzYWQ5MTQ2ZTJjYmU3ZGYzMzRlNWQyZDQxNSJ9.czp4HKImXTzOy8PixDyexJWM8s2eyVxHrurS7AroDDY&download=image.png "")
+
+1. 视图文件夹命名方式为大驼峰形式，下面再新建一个index.vue文件
+
